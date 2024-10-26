@@ -1,0 +1,51 @@
+specVersion: 0.0.4
+description: Subgraph for vault smart contract
+repository: https://github.com/renakaagusta/vault
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Vault
+    network: local
+    source:
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+      abi: VaultABI
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - SetCollateralPrice
+        - SetStabilityFee
+        - DepositCollateral
+        - WithdrawCollateral
+        - MintStable
+        - BurnStable
+        - PayDebt
+        - PayDebtInterest
+        - UpdatedInterestAmount
+      abis:
+        - name: VaultABI
+          file: ./abis/VaultABI.json
+      eventHandlers:
+        - event: SetCollateralPrice(uint256)
+          handler: handleSetCollateralPrice
+        - event: SetStabilityFee(uint256)
+          handler: handleSetStabilityFee
+        - event: DepositCollateral(address,address,uint256)
+          handler: handleDepositCollateral
+        - event:  WithdrawCollateral(address,address,uint256)
+          handler: handleWithdrawCollateral
+        - event: MintStable(address,address,uint256)
+          handler: handleMintStable
+        - event: BurnStable(address,address,uint256)
+          handler: handleBurnStable
+        - event: PayDebt(address,address,uint256)
+          handler: handlePayDebt
+        - event: PayDebtInterest(address,address,uint256)
+          handler: handlePayDebtInterest
+        - event: UpdatedInterestAmount(address,uint256,uint256,uint256)
+          handler: handleUpdatedInterestAmount
+      file: ./src/mapping.ts
+

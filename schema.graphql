@@ -1,0 +1,77 @@
+type SetCollateralPrice @entity {
+  id: ID!
+  collateralPrice: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetStabilityFee @entity {
+  id: ID!
+  stabilityFee: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type DepositCollateral @entity {
+  id: ID!
+  senderAdress: Bytes!
+  receiverAddress: Bytes!
+  amount: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type WithdrawCollateral @entity {
+  id: ID!
+  senderAdress: Bytes!
+  receiverAddress: Bytes!
+  amount: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type MintStable @entity {
+  id: ID!
+  senderAdress: Bytes!
+  receiverAddress: Bytes!
+  amount: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type BurnStable @entity {
+  id: ID!
+  senderAdress: Bytes!
+  receiverAddress: Bytes!
+  amount: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type PayDebt @entity {
+  id: ID!
+  senderAdress: Bytes!
+  receiverAddress: Bytes!
+  amount: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type PayDebtInterest @entity {
+  id: ID!
+  senderAdress: Bytes!
+  receiverAddress: Bytes!
+  amount: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type UpdatedInterestAmount @entity {
+  id: ID!
+  borrowerAddress: Bytes!
+  calculatedInterestAmount: BigInt!
+  acquiredInterestDebtAmounts: BigInt!
+  debtAmounts: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
